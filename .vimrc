@@ -14,7 +14,7 @@ set ruler " vertical and horizontal location
 set incsearch " highlights when searching
 set hlsearch " highlight words after searching
 set autoread " automatically loads changed files
-" set cursorline " shows what line your cursor is on 
+" set cursorline " shows what line your cursor is on
 
 syntax enable " syntax highlighting
 set background=dark
@@ -43,7 +43,6 @@ inoremap ()     ()
 set formatoptions+=rco
 
 set mouse=a " mouse stuff point n click
-set cursorline
 
 inoremap jk <Esc>
 vnoremap jk <Esc> 
@@ -63,14 +62,14 @@ endfunction
 let mapleader = "\<Space>"
 " tab
 nnoremap <leader>t :tabedit<CR>:edit<Space>
-nnoremap <leader>k :tabnext<CR>
-nnoremap <leader>j :tabprev<CR>
+nnoremap <C-k> :tabnext<CR>
+nnoremap <C-j> :tabprev<CR>
 nnoremap <leader>n :edit<Space>
 
 " writing and closing a file
-nnoremap <leader>s <Esc>:w<CR> 
-nnoremap <leader>q <Esc>:q<CR>
-nnoremap <leader>x <Esc>:qa<CR>
+nnoremap <leader>s :w<CR> 
+nnoremap <leader>q :q<CR>
+nnoremap <leader>x :qa<CR>
 
 " making a vim session
 nnoremap <leader>m <Esc>:mksession! session.vim<CR>
@@ -88,19 +87,21 @@ vnoremap <leader>/ I//<Esc>
 vnoremap <leader><leader>/ ld<Esc>
 
 "vim splits
-nnoremap <leader>v :vsplit<CR>
-nnoremap <leader>b :split<CR>
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
+nnoremap <leader>v :vsplit<CR><C-w>l:edit<Space>
+nnoremap <leader>b :split<CR><C-w>j:edit<Space>
+nnoremap <leader>h <C-w>h
+nnoremap <leader>l <C-w>l
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
 
 " search and replace
 nnoremap <leader>f :%s///gc
 
-nnoremap <C-c> :set<Space>nonumber<CR>:set<Space>nornu<CR>
-nnoremap <C-x> :set<Space>number<CR>:set<Space>relativenumber<CR>
+nnoremap <leader>c :set<Space>mouse=<CR>:set<Space>nonumber<CR>:set<Space>nornu<CR>
+nnoremap <leader><leader>c :set<Space>mouse=a<CR>:set<Space>number<CR>:set<Space>relativenumber<CR>
 nnoremap <leader>p :set<Space>paste<CR>i
 nnoremap <leader><leader>p :set<Space>nopaste<CR>
 
-
+" Tagging
+command! MakeTags !ctags -Rf .tags *
+nnoremap <leader>[ :MakeTags<CR><CR>
