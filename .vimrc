@@ -5,6 +5,7 @@ set smartindent
 " configure tabwidth and insert spaces instead of tabs
 set tabstop=4        " tab width is 4 spaces
 set shiftwidth=4     " indent also with 4 spaces
+set textwidth=80     " set the textwidth wrapping to 80 chars
 set expandtab        " expand tabs to spaces
 set laststatus=2     " status bar bottom
 
@@ -14,7 +15,7 @@ set ruler " vertical and horizontal location
 set incsearch " highlights when searching
 set hlsearch " highlight words after searching
 set autoread " automatically loads changed files
-" set cursorline " shows what line your cursor is on
+set cursorline " shows what line your cursor is on
 
 syntax enable " syntax highlighting
 set background=dark
@@ -31,6 +32,7 @@ let g:cpp_class_decl_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 
+inoremap ;; <Right>
 " basic curly brace completion
 inoremap {      {}<Left>
 inoremap {<CR>  {<CR>}<Esc>O
@@ -39,6 +41,10 @@ inoremap {}     {}
 inoremap (      ()<Left>
 inoremap (<CR>  (<CR>)<Esc>O
 inoremap ()     ()
+
+inoremap [      []<Left>
+inoremap [<CR>  [<CR>]<Esc>O
+inoremap []     []
 
 set formatoptions+=rco
 
@@ -97,6 +103,7 @@ nnoremap <leader>k <C-w>k
 " search and replace
 nnoremap <leader>f :%s///gc
 
+" copy and paste formatting
 nnoremap <leader>c :set<Space>mouse=<CR>:set<Space>nonumber<CR>:set<Space>nornu<CR>
 nnoremap <leader><leader>c :set<Space>mouse=a<CR>:set<Space>number<CR>:set<Space>relativenumber<CR>
 nnoremap <leader>p :set<Space>paste<CR>i
@@ -105,3 +112,34 @@ nnoremap <leader><leader>p :set<Space>nopaste<CR>
 " Tagging
 command! MakeTags !ctags -Rf .tags *
 nnoremap <leader>[ :MakeTags<CR><CR>
+
+" Latex
+inoremap ;bg <Esc>:call<Space>BeginEnd("")<CR>
+
+" \begin{} ... \end{
+function! BeginEnd(type) abort
+  let t = a:type
+  if !(strlen(a:type))
+    call inputsave()
+    let t = input('Begin: ')
+    call inputrestore()
+  endif
+  let ins = ["\\begin{".t."}", "\\end{".t."}"]
+  call append('.', ins)
+  delete
+endfunction
+
+" compile
+nnoremap <leader>cp :call CompileTex()<CR>
+
+function! CompileTex() abort
+  let cmd = "!pdflatex ".expand('%:p')
+  execute cmd
+endfunction
+
+" more latex shortcuts
+inoremap $$ $$<Left>
+inoremap ;it \textit{}<Left>
+inoremap ;bf \textbf{}<Left>
+inoremap ;f/ \frac{}{}<Left><Left><Left>
+
