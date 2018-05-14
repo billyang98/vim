@@ -108,6 +108,9 @@ nnoremap <leader><leader>p :set<Space>nopaste<CR>
 command! MakeTags !ctags -Rf .tags *
 nnoremap <leader>[ :MakeTags<CR><CR>
 
+" load typescript files
+autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
+
 """ FILETYPE SPECIFIC:
 " .vim file loader
 function! Load_File(file) abort
@@ -129,4 +132,6 @@ augroup au_langs
   autocmd filetype tex call Load_File("tex.vim")
   " Python
   autocmd filetype python call Load_File("python.vim")
+  " Typescript
+  autocmd filetype typescript call Load_File("typescript.vim")
 augroup END
