@@ -1,6 +1,6 @@
 " use indentation of previous line
 set autoindent
-" use intelligent indentation for C
+" use intelligent indentation
 set smartindent
 " configure tabwidth and insert spaces instead of tabs
 set tabstop=4        " tab width is 4 spaces
@@ -25,15 +25,8 @@ let g:solarized_bold=1
 let g:solarized_italic=1
 colorscheme solarized 
 
-" cpp syntax
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_experimental_template_highlight = 1
-
 inoremap ;; <Right>
-" basic curly brace completion
+" basic brace completion
 inoremap {      {}<Left>
 inoremap {<CR>  {<CR>}<Esc>O
 inoremap {}     {}
@@ -42,9 +35,18 @@ inoremap (      ()<Left>
 inoremap (<CR>  (<CR>)<Esc>O
 inoremap ()     ()
 
-inoremap [      []<Left>
-inoremap [<CR>  [<CR>]<Esc>O
+inoremap [      []<left>
+inoremap [<cr>  [<cr>]<esc>o
 inoremap []     []
+
+" quotations
+inoremap "      ""<left>
+inoremap "<cr>  "<cr>"<esc>o
+inoremap ""     ""
+
+inoremap '      ''<left>
+inoremap '<cr>  '<cr>'<esc>o
+inoremap ''     ''
 
 set formatoptions+=rco
 
@@ -66,7 +68,7 @@ function! SuperTab()
 endfunction
 
 let mapleader = "\<Space>"
-" tab
+" tabs
 nnoremap <leader>t :tabedit<CR>:edit<Space>
 nnoremap <C-k> :tabnext<CR>
 nnoremap <C-j> :tabprev<CR>
@@ -84,13 +86,6 @@ nnoremap <leader>r <Esc>:so ~/.vimrc<CR>
 
 " clearing the seach buffer
 nnoremap ,, /;;;<CR>
-
-" commenting a line
-nnoremap <leader>/ 0i//<Esc>
-nnoremap <leader><leader>/ 0xx
-" commenting multiple lines in visual block
-vnoremap <leader>/ I//<Esc>
-vnoremap <leader><leader>/ ld<Esc>
 
 "vim splits
 nnoremap <leader>v :vsplit<CR><C-w>l:edit<Space>
@@ -113,33 +108,25 @@ nnoremap <leader><leader>p :set<Space>nopaste<CR>
 command! MakeTags !ctags -Rf .tags *
 nnoremap <leader>[ :MakeTags<CR><CR>
 
-" Latex
-inoremap ;bg <Esc>:call<Space>BeginEnd("")<CR>
-
-" \begin{} ... \end{
-function! BeginEnd(type) abort
-  let t = a:type
-  if !(strlen(a:type))
-    call inputsave()
-    let t = input('Begin: ')
-    call inputrestore()
+""" FILETYPE SPECIFIC:
+" .vim file loader
+function! Load_File(file) abort
+  if !empty(globpath(&runtimepath, a:file))
+    execute "source " . globpath(&runtimepath, a:file)
   endif
-  let ins = ["\\begin{".t."}", "\\end{".t."}"]
-  call append('.', ins)
-  delete
 endfunction
-
-" compile
-nnoremap <leader>cp :call CompileTex()<CR>
-
-function! CompileTex() abort
-  let cmd = "!pdflatex ".expand('%:p')
-  execute cmd
-endfunction
-
-" more latex shortcuts
-inoremap $$ $$<Left>
-inoremap ;it \textit{}<Left>
-inoremap ;bf \textbf{}<Left>
-inoremap ;f/ \frac{}{}<Left><Left><Left>
-
+if matchstr(&runtimepath, $HOME.'/.vim/lang') == ""
+  let &runtimepath.=','.$HOME.'/.vim/lang'
+endif
+augroup au_langs
+  autocmd!
+  " C/C++
+  autocmd filetype c,cpp call Load_File("c.vim")
+  " Java
+  autocmd filetype java call Load_File("java.vim")
+  " LaTeX
+  let g:tex_flavor = "latex"
+  autocmd filetype tex call Load_File("tex.vim")
+  " Python
+  autocmd filetype python call Load_File("python.vim")
+augroup END
