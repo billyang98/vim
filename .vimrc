@@ -3,8 +3,8 @@ set autoindent
 " use intelligent indentation
 set smartindent
 " configure tabwidth and insert spaces instead of tabs
-set tabstop=2        " tab width is 4 spaces
-set shiftwidth=2     " indent also with 4 spaces
+set tabstop=4        " tab width is 4 spaces
+set shiftwidth=4     " indent also with 4 spaces
 set textwidth=80     " set the textwidth wrapping to 80 chars
 set expandtab        " expand tabs to spaces
 set laststatus=2     " status bar bottom
@@ -16,6 +16,7 @@ set incsearch " highlights when searching
 set hlsearch " highlight words after searching
 set autoread " automatically loads changed files
 set cursorline " shows what line your cursor is on
+set whichwrap+=<,>,[,],h,l,~                 " arrow keys can wrap in normal and insert modes
 
 syntax enable " syntax highlighting
 set background=dark
@@ -24,6 +25,8 @@ let g:solarized_termtrans=1
 let g:solarized_bold=1
 let g:solarized_italic=1
 colorscheme solarized 
+
+""set foldmethod=syntax
 
 inoremap ;; <Right>
 " basic brace completion
