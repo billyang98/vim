@@ -17,6 +17,7 @@ set hlsearch " highlight words after searching
 set autoread " automatically loads changed files
 set cursorline " shows what line your cursor is on
 set whichwrap+=<,>,[,],h,l,~                 " arrow keys can wrap in normal and insert modes
+set backspace=indent,eol,start
 
 syntax enable " syntax highlighting
 set background=dark
