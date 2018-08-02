@@ -3,9 +3,8 @@ set autoindent
 " use intelligent indentation
 set smartindent
 " configure tabwidth and insert spaces instead of tabs
-set tabstop=4        " tab width is 4 spaces
-set shiftwidth=4     " indent also with 4 spaces
-set textwidth=80     " set the textwidth wrapping to 80 chars
+set tabstop=2        " tab width is 4 spaces
+set shiftwidth=2     " indent also with 4 spaces
 set expandtab        " expand tabs to spaces
 set laststatus=2     " status bar bottom
 
@@ -27,7 +26,7 @@ let g:solarized_bold=1
 let g:solarized_italic=1
 colorscheme solarized 
 
-""set foldmethod=syntax
+set foldmethod=syntax
 
 inoremap ;; <Right>
 " basic brace completion
@@ -57,7 +56,6 @@ set formatoptions+=rco
 set mouse=a " mouse stuff point n click
 
 inoremap jk <Esc>
-vnoremap jk <Esc> 
 
 " tab autocomplete
 inoremap <Tab> <C-r>=SuperTab()<CR>
@@ -112,6 +110,7 @@ nnoremap <leader><leader>p :set<Space>nopaste<CR>
 " Tagging
 command! MakeTags !ctags -Rf .tags *
 nnoremap <leader>[ :MakeTags<CR><CR>
+set tags=tags;/
 
 " load typescript files
 autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
@@ -139,4 +138,6 @@ augroup au_langs
   autocmd filetype python call Load_File("python.vim")
   " Typescript
   autocmd filetype typescript call Load_File("typescript.vim")
+  " Javascript
+  autocmd filetype javascript call Load_File("javascript.vim")
 augroup END
