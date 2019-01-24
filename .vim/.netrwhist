@@ -1,3 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
-let g:netrw_dirhist_1='/Users/bill/.vim'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/bill/Bill/college/f18/cs346_crypto/hw'
+let g:netrw_dirhist_2='/Users/bill/Bill/college/f18/cs346_crypto/hw/hw2'
+let g:netrw_dirhist_3='/Users/bill/Bill/college/f18/cs346_crypto/hw'
+let g:netrw_dirhist_4='/Users/bill/Bill/college/f18/cs346_crypto/hw/hw1'
+let g:netrw_dirhist_5='/Users/bill/Bill/college/f18/cs378_big_data/p12/src/main/java/com/refactorlabs/cs378/assign12'

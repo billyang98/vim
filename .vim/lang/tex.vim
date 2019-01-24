@@ -26,3 +26,4 @@ inoremap $$ $$<Left>
 inoremap ;it \textit{}<Left>
 inoremap ;bf \textbf{}<Left>
 inoremap ;f/ \frac{}{}<Left><Left><Left>
+inoremap \{ \{\}<Left><Left>

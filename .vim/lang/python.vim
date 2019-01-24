@@ -5,3 +5,6 @@ nnoremap <leader><leader>/ 0x
 vnoremap <leader>/ I#<Esc>
 vnoremap <leader><leader>/ d<Esc>
 
+set tabstop=4        " tab width is 4 spaces
+set shiftwidth=4     " indent also with 4 spaces
+
