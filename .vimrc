@@ -17,6 +17,7 @@ set autoread " automatically loads changed files
 set cursorline " shows what line your cursor is on
 set whichwrap+=<,>,[,],h,l,~                 " arrow keys can wrap in normal and insert modes
 set backspace=indent,eol,start
+set wildignorecase "when doing autocomplete ignore the case
 
 syntax enable " syntax highlighting
 set background=dark
@@ -59,6 +60,7 @@ inoremap jk <Esc>
 
 " tab autocomplete
 inoremap <Tab> <C-r>=SuperTab()<CR>
+inoremap <S-Tab> <C-x><C-f>
 
 function! SuperTab()
   let l:part = strpart(getline('.'),col('.')-2,1)
