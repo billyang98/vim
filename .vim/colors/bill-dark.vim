@@ -353,21 +353,21 @@ elseif g:solarized_termcolors != 256 && &t_Co >= 16
     let s:green       = "2"
 elseif g:solarized_termcolors == 256 " COLORS HERE
     let s:vmode       = "cterm"
-    let s:base03      = "231" " background
-    let s:base02      = "255" " background highlights
-    let s:base01      = "236" " comments/ secondary content
+    let s:base03      = "234" " background
+    let s:base02      = "236" " background highlights
+    let s:base01      = "248" " comments/ secondary content
     let s:base00      = "240" 
-    let s:base0       = "0" " body text/ primary content
-    let s:base1       = "236" " optional emphasized content
-    let s:base2       = "255" 
-    let s:base3       = "231" 
-    let s:yellow      = "226"
-    let s:orange      = "130"
+    let s:base0       = "254" " body text/ primary content
+    let s:base1       = "245" " optional emphasized content
+    let s:base2       = "187" 
+    let s:base3       = "230" 
+    let s:yellow      = "143"
+    let s:orange      = "179"
     let s:red         = "167"
-    let s:magenta     = "90"
-    let s:violet      = "93"
-    let s:blue        = "27"
-    let s:cyan        = "30" 
+    let s:magenta     = "177"
+    let s:violet      = "105"
+    let s:blue        = "75"
+    let s:cyan        = "80" 
     let s:green       = "22"
 else
     let s:vmode       = "cterm"
@@ -641,7 +641,7 @@ if (has("gui_running")) || &t_Co > 8
     exe "hi! StatusLine"     .s:fmt_none   .s:fg_base02 .s:bg_base1
     exe "hi! StatusLineNC"   .s:fmt_none   .s:fg_base02 .s:bg_base00
     "exe "hi! Visual"         .s:fmt_stnd   .s:fg_none   .s:bg_base02
-    exe "hi! Visual"         .s:fmt_none   .s:fg_base0 .s:bg_base01
+    exe "hi! Visual"         .s:fmt_none   .s:fg_base03 .s:bg_base01
 else
     exe "hi! StatusLine"     .s:fmt_none   .s:fg_base02 .s:bg_base2
     exe "hi! StatusLineNC"   .s:fmt_none   .s:fg_base02 .s:bg_base2
@@ -649,12 +649,11 @@ else
 endif
 exe "hi! Directory"      .s:fmt_none   .s:fg_blue   .s:bg_none
 exe "hi! ErrorMsg"       .s:fmt_revr   .s:fg_red    .s:bg_none
-exe "hi! IncSearch"      .s:fmt_stnd   .s:fg_orange .s:bg_base02
-exe "hi! Search"         .s:fmt_revr   .s:fg_yellow .s:bg_base0
+exe "hi! IncSearch"      .s:fmt_stnd   .s:fg_orange .s:bg_none
+exe "hi! Search"         .s:fmt_revr   .s:fg_yellow .s:bg_none
 exe "hi! MoreMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
 exe "hi! ModeMsg"        .s:fmt_none   .s:fg_base0   .s:bg_none
-"exe "hi! LineNr"         .s:fmt_none   .s:fg_base01 .s:bg_base02
-exe "hi! LineNr"         .s:fmt_none   .s:fg_base00 .s:bg_base02
+exe "hi! LineNr"         .s:fmt_none   .s:fg_base01 .s:bg_base02
 exe "hi! Question"       .s:fmt_bold   .s:fg_cyan   .s:bg_none
 exe "hi! VertSplit"      .s:fmt_bold   .s:fg_base00 .s:bg_base00
 exe "hi! Title"          .s:fmt_bold   .s:fg_orange .s:bg_none
