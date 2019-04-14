@@ -5,6 +5,7 @@ set smartindent
 " configure tabwidth and insert spaces instead of tabs
 set tabstop=2        " tab width is 4 spaces
 set shiftwidth=2     " indent also with 4 spaces
+set textwidth=80     " set the textwidth wrapping to 80 chars
 set expandtab        " expand tabs to spaces
 set laststatus=2     " status bar bottom
 
@@ -20,7 +21,7 @@ set backspace=indent,eol,start
 set wildignorecase "when doing autocomplete ignore the case
 
 syntax enable " syntax highlighting
-set background=dark
+set background=light
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 let g:solarized_bold=1
