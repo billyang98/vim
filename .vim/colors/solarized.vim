@@ -353,21 +353,21 @@ elseif g:solarized_termcolors != 256 && &t_Co >= 16
     let s:green       = "2"
 elseif g:solarized_termcolors == 256 " COLORS HERE
     let s:vmode       = "cterm"
-    let s:base03      = "231" " background
+    let s:base03      = "250" " background
     let s:base02      = "255" " background highlights
     let s:base01      = "236" " comments/ secondary content
-    let s:base00      = "240" 
+    let s:base00      = "0" 
     let s:base0       = "0" " body text/ primary content
     let s:base1       = "236" " optional emphasized content
     let s:base2       = "255" 
-    let s:base3       = "231" 
+    let s:base3       = "250" 
     let s:yellow      = "226"
-    let s:orange      = "130"
+    let s:orange      = "88"
     let s:red         = "167"
-    let s:magenta     = "90"
-    let s:violet      = "93"
-    let s:blue        = "27"
-    let s:cyan        = "30" 
+    let s:magenta     = "89"
+    let s:violet      = "55"
+    let s:blue        = "26"
+    let s:cyan        = "24" 
     let s:green       = "22"
 else
     let s:vmode       = "cterm"
@@ -638,10 +638,10 @@ else
     exe "hi! NonText"        .s:fmt_bold   .s:fg_base01 .s:bg_none
 endif
 if (has("gui_running")) || &t_Co > 8
-    exe "hi! StatusLine"     .s:fmt_none   .s:fg_base02 .s:bg_base1
-    exe "hi! StatusLineNC"   .s:fmt_none   .s:fg_base02 .s:bg_base00
+    exe "hi! StatusLine"     .s:fmt_none   .s:fg_base0 .s:bg_base2
+    exe "hi! StatusLineNC"   .s:fmt_none   .s:fg_base0 .s:bg_base3
     "exe "hi! Visual"         .s:fmt_stnd   .s:fg_none   .s:bg_base02
-    exe "hi! Visual"         .s:fmt_none   .s:fg_base0 .s:bg_base01
+    exe "hi! Visual"         .s:fmt_none   .s:fg_base0 .s:bg_base03
 else
     exe "hi! StatusLine"     .s:fmt_none   .s:fg_base02 .s:bg_base2
     exe "hi! StatusLineNC"   .s:fmt_none   .s:fg_base02 .s:bg_base2
@@ -664,7 +664,7 @@ exe "hi! WildMenu"       .s:fmt_none   .s:fg_base2  .s:bg_base02
 exe "hi! Folded"         .s:fmt_undb   .s:fg_base0  .s:bg_base02  .s:sp_base03
 exe "hi! FoldColumn"     .s:fmt_bold   .s:fg_base0  .s:bg_base02
 exe "hi! DiffAdd"        .s:fmt_revr   .s:fg_green .s:bg_none
-exe "hi! DiffChange"     .s:fmt_revr   .s:fg_yellow .s:bg_none
+exe "hi! DiffChange"     .s:fmt_revr   .s:fg_yellow .s:bg_base1
 exe "hi! DiffDelete"     .s:fmt_revr   .s:fg_red    .s:bg_none
 exe "hi! DiffText"       .s:fmt_revr   .s:fg_blue   .s:bg_none
 exe "hi! SignColumn"     .s:fmt_none   .s:fg_base0  .s:bg_base02
@@ -677,8 +677,8 @@ exe "hi! Pmenu"          .s:fmt_none   .s:fg_base0  .s:bg_base02
 exe "hi! PmenuSel"       .s:fmt_none   .s:fg_base2  .s:bg_base01
 exe "hi! PmenuSbar"      .s:fmt_none   .s:fg_base0  .s:bg_base2
 exe "hi! PmenuThumb"     .s:fmt_none   .s:fg_base03 .s:bg_base0
-exe "hi! TabLine"        .s:fmt_undr   .s:fg_base0  .s:bg_base02  .s:sp_base0
-exe "hi! TabLineSel"     .s:fmt_undr   .s:fg_base2  .s:bg_base01  .s:sp_base0
+exe "hi! TabLine"        .s:fmt_undr   .s:fg_base0  .s:bg_base03  .s:sp_base0
+exe "hi! TabLineSel"     .s:fmt_undr   .s:fg_base0  .s:bg_base02  .s:sp_base0
 exe "hi! TabLineFill"    .s:fmt_undr   .s:fg_base0  .s:bg_base02  .s:sp_base0
 exe "hi! CursorColumn"   .s:fmt_none   .s:fg_none   .s:bg_base02
 exe "hi! CursorLine"     .s:fmt_uopt   .s:fg_none   .s:bg_base02  .s:sp_base1
@@ -686,7 +686,7 @@ exe "hi! CursorLineNr"   .s:fmt_bold   .s:fg_base0  .s:bg_none
 exe "hi! ColorColumn"    .s:fmt_none   .s:fg_none   .s:bg_base02
 exe "hi! Cursor"         .s:fmt_none   .s:fg_base02 .s:bg_base0
 hi! link lCursor Cursor
-exe "hi! MatchParen"     .s:fmt_bold   .s:fg_cyan    .s:bg_base01
+exe "hi! MatchParen"     .s:fmt_bold   .s:fg_cyan    .s:yellow
 
 "}}}
 " vim syntax highlighting "{{{
@@ -720,7 +720,7 @@ exe "hi! htmlTagN"       . s:fg_base1  .s:bg_none   .s:fmt_bold
 exe "hi! htmlTagName"    . s:fg_blue   .s:bg_none   .s:fmt_bold
 exe "hi! htmlSpecialTagName". s:fg_blue  .s:bg_none .s:fmt_ital
 exe "hi! htmlArg"        . s:fg_base00 .s:bg_none   .s:fmt_none
-exe "hi! javaScript"     . s:fg_yellow .s:bg_none   .s:fmt_none
+exe "hi! javaScript"     . s:fg_orange .s:bg_none   .s:fmt_none
 "}}}
 " perl highlighting "{{{
 " ---------------------------------------------------------------------
@@ -732,10 +732,10 @@ exe "hi! perlStatementFileDesc". s:fg_cyan.s:bg_back.s:fmt_none
 " tex highlighting "{{{
 " ---------------------------------------------------------------------
 exe "hi! texStatement"   . s:fg_cyan   .s:bg_back   .s:fmt_none
-exe "hi! texMathZoneX"   . s:fg_yellow .s:bg_back   .s:fmt_none
-exe "hi! texMathMatcher" . s:fg_yellow .s:bg_back   .s:fmt_none
-exe "hi! texMathMatcher" . s:fg_yellow .s:bg_back   .s:fmt_none
-exe "hi! texRefLabel"    . s:fg_yellow .s:bg_back   .s:fmt_none
+exe "hi! texMathZoneX"   . s:fg_orange .s:bg_back   .s:fmt_none
+exe "hi! texMathMatcher" . s:fg_orange .s:bg_back   .s:fmt_none
+exe "hi! texMathMatcher" . s:fg_orange .s:bg_back   .s:fmt_none
+exe "hi! texRefLabel"    . s:fg_orange .s:bg_back   .s:fmt_none
 "}}}
 " ruby highlighting"{{{
 " ---------------------------------------------------------------------

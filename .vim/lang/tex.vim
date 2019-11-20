@@ -7,6 +7,9 @@ nnoremap <leader><leader>/ 0x
 vnoremap <leader>/ I%<Esc>
 vnoremap <leader><leader>/ d<Esc>
 
+inoremap '      '
+inoremap '<cr>  '<cr>
+
 " \begin{} ... \end{
 function! BeginEnd(type) abort
   let t = a:type

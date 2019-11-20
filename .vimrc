@@ -102,7 +102,10 @@ nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 
 " search and replace
-nnoremap <leader>f :%s///gc
+nnoremap <leader>f :%s///gc<Left><Left><Left><Left>
+
+" multiline formatting
+vnoremap <leader>f JAa<BS><Esc>
 
 " copy and paste formatting
 nnoremap <leader>c :set<Space>mouse=<CR>:set<Space>nonumber<CR>:set<Space>nornu<CR>
