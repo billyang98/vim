@@ -20,7 +20,8 @@ set whichwrap+=<,>,[,],h,l,~                 " arrow keys can wrap in normal and
 set backspace=indent,eol,start
 set wildignorecase "when doing autocomplete ignore the case
 
-syntax enable " syntax highlighting
+
+syntax enable " syntax highlighting      
 set background=light
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
@@ -73,6 +74,11 @@ function! SuperTab()
 endfunction
 
 let mapleader = "\<Space>"
+
+" highlight EOL whitespace
+highlight ExtraWhitespace ctermbg=lightred guibg=lightred
+match ExtraWhitespace /\s\+$/  
+
 " tabs
 nnoremap <leader>t :tabedit<CR>:edit<Space>
 nnoremap <C-k> :tabnext<CR>
